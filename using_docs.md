@@ -12,7 +12,7 @@
 
 **Подобный тип ошибки встречается чаще всего у тех пользователей, которые ни разу не открывали [документацию][7].**
 
-Предположим, вы получили сообщение через обработчик `on_message(message)` и хотите узнать что написано в этом сообщении. Вы выводите его при момощи строчки `print(message)`, но вместо ожидаемого результата получаете что-то такое:
+Предположим, вы получили сообщение через обработчик `on_message(message)` и хотите узнать что написано в этом сообщении. Вы выводите его при помощи строчки `print(message)`, но вместо ожидаемого результата получаете что-то такое:
 ```py
 <Message id=917324421392928266 channel=<TextChannel id=760430076071690856 name='тест-бота' position=6 nsfw=False news=False category_id=842698448217964574> type=<MessageType.default: 0> author=<Member id=344865227062144141 name='name' discriminator='1234' bot=False nick='nickname' guild=<Guild id=752821563455176824 name='Server' shard_id=None chunked=True membe
 r_count=10000>> flags=<MessageFlags value=0>>
