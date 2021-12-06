@@ -36,10 +36,40 @@ r_count=10000>> flags=<MessageFlags value=0>>
 
 ![image](https://user-images.githubusercontent.com/61795655/144810003-3bf5e262-d7b0-46de-83df-d1fb9d8835ff.png)
 
-3. Открываем [`discord.Message`][1] и получаем всю информацию об объекте. В колонке **Attributes** вы можете видеть все свойства объекта сообщения. Здесь все, что описывалось 
+3. Открываем [`discord.Message`][1] и получаем всю информацию об объекте. В колонке **Attributes** вы можете видеть все свойства объекта сообщения. Здесь все, что описывалось в [**примере выше**][9]. В колонке **Methods** все функции, которые можно вызвать у объекта сообщения.
 
 ![image](https://user-images.githubusercontent.com/61795655/144810658-8ed37216-d044-4087-b886-fe0ff81fedcd.png)
 
+4. Нажав на любой элемент из колонки **Attributes** или **Methods**, вы переместитесь к более подробному описанию свойства или метода.
+
+Например, тыкнем на `channel` и увидем, что это свойство `discord.Message.channel` по сути является другим объектом библиотеки [`discord.TextChannel`][6], нажав на который мы можем открыть и посмотреть его свойства и методы
+
+![image](https://user-images.githubusercontent.com/61795655/144811568-290b9163-703d-4887-94c1-c62b2d8dddb0.png)
+
+5. К примеру, у текстового канала, видим асинхронный метод `send`
+
+![image](https://user-images.githubusercontent.com/61795655/144811950-cc7ef98a-369b-4ec1-830e-e0d2f77c8243.png)
+
+6. Открыв его, можем увидеть подробное описание самой функции, аргументов, которые она принимает, что возвращает и т.д.
+
+Теперь видим, что единственным обязетальным аргументом является `content`, который принимает тип `str` и явлвяется текстом отправляемого сообщения
+
+![image](https://user-images.githubusercontent.com/61795655/144812168-3b3ca691-15d7-4605-a44f-b88a5c025e6d.png)
+
+---
+
+Думаю, очевидно, что работа с остальными объектами полностью аналогична. Ищите по ключевому слову объект, про который вам нужно узнать, смотрите чт ос ним можно сделать и делаете :)
+
+В итоге, потыкав пару минут документацию, вы на вряд ли будете допускать базовые ошибки и задавать повторяющиеся вопросы на [стаке][10] или других площадках.
+
+```
+@bot.event
+async def on_message(message):
+  # из документации находим, что текст сообщения содержится в свойстве content
+  print(f'Текст сообщения: {message.content}')
+  # из объекта сообщения получаем канал, в котором это сообщение находится и у канала вызываем метод send
+  await message.channel.send('Отправка сообщения в ответ!')
+```
 
 [1]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.Message
 [2]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.User
@@ -49,3 +79,5 @@ r_count=10000>> flags=<MessageFlags value=0>>
 [6]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.TextChannel
 [7]: https://discordpy.readthedocs.io/en/stable/index.html
 [8]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.Reaction
+[9]: https://github.com/denisnumb/discord-py-guide/blob/main/using_docs.md#%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0
+[10]: https://ru.stackoverflow.com/
