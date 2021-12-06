@@ -61,6 +61,7 @@ from discord.ext import commands
 Помимо этого, выдадим боту намерения (`intents`), инструкция по настройке которых была [в начале][11].
 
 *В качестве префикса команды укажем `!`, намерения нужно выдавать именно те, которые вы будете использовать, но на первое время можно выдать все, то есть `discord.Intents.all()`*
+
 **Если у вас `discord.ext.commands.Bot`:**
 ```
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
