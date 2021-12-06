@@ -24,7 +24,7 @@ r_count=10000>> flags=<MessageFlags value=0>>
 
 Заходим на главную страницу документации: https://discordpy.readthedocs.io/en/stable/index.html
 
-![image](https://user-images.githubusercontent.com/61795655/144809133-8358619d-0894-4d18-b6b1-6c5a31a5c20b.png)
+![1](https://user-images.githubusercontent.com/61795655/144809210-8a175873-bf2c-44fc-bd08-722f32f90c82.png)
 
 
 [1]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.Message
