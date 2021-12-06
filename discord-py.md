@@ -63,11 +63,11 @@ from discord.ext import commands
 *В качестве префикса команды укажем `!`, намерения нужно выдавать именно те, которые вы будете использовать, но на первое время можно выдать все, то есть `discord.Intents.all()`*
 
 **Если у вас `discord.ext.commands.Bot`:**
-```
+```py
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 ```
 **Если у вас `discord.Client`, то префикс указывать не нужно (класс не принимает такого аргумента):**
-```
+```py
 bot = discord.Client(intents=discord.Intents.all())
 ```
 
