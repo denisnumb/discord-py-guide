@@ -30,6 +30,14 @@ r_count=10000>> flags=<MessageFlags value=0>>
 
 ![1](https://user-images.githubusercontent.com/61795655/144809560-ca18d073-0819-4042-8c0f-fee37e07261e.png)
 
+2. Здесь видим кучу разных объектов, однако нас интересует именно чистый класс [`discord.Message`][1], так как, например, элемент списка `discord.Reaction.message` является всего лишь свойством другого класса [`discord.Reaction`][8] и ссылается на тот же класс [`discord.Message`][1]. Вы можете убедиться в этом самостоятельно открыв страницу. 
+
+![image](https://user-images.githubusercontent.com/61795655/144810003-3bf5e262-d7b0-46de-83df-d1fb9d8835ff.png)
+
+3. Открываем [`discord.Message`][1] и получаем всю информацию об объекте. В колонке **Attributes** вы можете видеть все свойства объекта сообщения. Здесь все, что описывалось 
+
+![image](https://user-images.githubusercontent.com/61795655/144810658-8ed37216-d044-4087-b886-fe0ff81fedcd.png)
+
 
 [1]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.Message
 [2]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.User
@@ -38,3 +46,4 @@ r_count=10000>> flags=<MessageFlags value=0>>
 [5]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=guild#discord.Role
 [6]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.TextChannel
 [7]: https://discordpy.readthedocs.io/en/stable/index.html
+[8]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.Reaction
