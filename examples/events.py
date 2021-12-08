@@ -7,7 +7,7 @@ bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 # подробнее про это событие: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#async-def-on_ready
 @bot.event
 async def on_ready():
-	print(f'{bot.user} запущен и готов к работе!')
+	print(f'{bot.user} запущен и готов к работе!\n')
 
 # подробнее про это событие: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#async-def-on_messagemessage
 @bot.event
