@@ -146,6 +146,14 @@ bot.run(TOKEN)
 
 ---
 
+В итоге должен получиться примерно такой код, посмотреть который можно [**здесь**][20].
+
+Данный бот выводит сообщение при успешном запуске, а также подробную информацию о каждом полученном сообщении.
+
+Для этого примера достаточно было бы простого бота [`discord.Client`][5], так как он обрабатывает только события. Но я наперед прописал в коде бота [`discord.ext.commands.Bot`][7], так как дальше в этот код мы будем добавлять обработку команд.
+
+---
+
 [1]: https://discord.com/developers/applications
 [2]: https://i.stack.imgur.com/ZnOYm.png
 [3]: https://i.stack.imgur.com/HZCQP.png
@@ -165,3 +173,4 @@ bot.run(TOKEN)
 [17]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=on_raw_reaction_add#discord.RawReactionActionEvent
 [18]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=on_raw_reaction_add#discord.on_member_join
 [19]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Bot.run
+[20]: https://github.com/denisnumb/discord-py-guide/blob/main/examples/events.py
