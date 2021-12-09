@@ -296,7 +296,7 @@ async def get_text(ctx, first_word, second_word, *, other_text):
  
  ## Итог
  
- Если смешать все команды из руководства в один код, то должно получиться что-то ТАКОЕ.
+ Если смешать все команды из руководства в один код, то должно получиться что-то [**такое**][33].
  
  Данной информации должно хватить для понимания базовых вещей, таких как **работа с документацией**, **создание команд**, **работа с обработчиками событий** и т.д.
  
@@ -335,3 +335,4 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 [30]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
 [31]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=member#discord.Member
 [32]: https://www.heroku.com/
+[33]: https://github.com/denisnumb/discord-py-guide/blob/main/examples/commands.py
