@@ -2,27 +2,6 @@
 
 Подробнее про различия можно почитать [**здесь**][3].
 
----
-
-## И вместо такой реализации команд
-```py
-@bot.event
-async def on_message(message):
-  if message.author.bot:
-    return
-    
-  if message.content == '!test':
-    # код для команды !test
-```
-
-## Стоит использовать такую
-
-```py
-@bot.command()
-async def test(ctx):
-  # код для команды !test
-```
-
 Подробнее про создание команд можно почитать [**здесь**][3].
 
 ---
@@ -33,6 +12,33 @@ async def test(ctx):
 2. Если вам потребуется сложная команда, с необходимостью приема нескольких значений, это гораздо проще реализовать через отдельную функцию, чем писать разделение аргументов самостоятельно
 3. При большом количестве команд, прописывать все в одной функции будет некорректно с точки зрения написания кода.
 
+## Пример:
+
+Команда принимает через пробелы первым аргументом *упоминание пользователя*, вторым *число*, третьим весь остальной текст, с учетем пробелов.
+
+**Выглядит это так:**
+
+![image](https://user-images.githubusercontent.com/61795655/145382386-a441072c-4c1a-4849-90e9-fa27ec9f32c5.png)
+
+**Реализация через `on_message()`** - все аругменты приходится получать вручную
+```py
+@bot.event
+async def on_message(message):  
+  if message.content.startswith('!command'):
+    # message.content.split() = ['!command', '<@!249864127063142451>', '2', 'текст', 'с', 'пробелами']
+    member = message.mentions[0]
+    number = int(message.content.split()[2])
+    text = ' '.join(message.content.split()[3:])
+```
+
+**Реализация через отдельную функцию** - `discord-py` все делает за вас
+```py
+@bot.command()
+async def command(ctx, member: discord.Member, number: int, *, text):
+  # Готово! Переменные уже получены в качестве аргументов и имеют те же типы
+```
+
+**Как видно, в данном случае реализация через отдельную функцию гораздо компактнее и удобнее**
 
 [1]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=client#discord.Client
 [2]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Bot
