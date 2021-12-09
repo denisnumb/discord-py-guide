@@ -154,6 +154,20 @@ bot.run(TOKEN)
 
 ---
 
+### Обработка отдельных команд
+
+*Напоминаю, что для работы с командами, в качестве бота нужно использовать объект [`discord.ext.commands.Bot`][7], а не [`discord.Client`][5]!*
+
+ - Команды бота, как и обработчики событий, являются асинхронными функциями (`async def`). 
+
+ - Чтобы `discord-py` обнаружил команду в коде, функцию нужно пометить декоратором `@bot.command()`, где `bot` - название объекта вашего бота. 
+
+ - **Скобки в декораторе `@bot.command()` обязательны**, в отличии от `@bot.event`, так как декторатор [`discord.ext.commands.Command()`][22] принимает необязательные аргументы.    Без скобок декоратор корректно работать не будет. **Подробнее про декораторы можно почитать [**выше**][21]*
+
+ - Также, в отличии от событий, функцию можно назвать как захочется - **название функции станет названием команды**.
+
+
+
 [1]: https://discord.com/developers/applications
 [2]: https://i.stack.imgur.com/ZnOYm.png
 [3]: https://i.stack.imgur.com/HZCQP.png
@@ -174,3 +188,5 @@ bot.run(TOKEN)
 [18]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=on_raw_reaction_add#discord.on_member_join
 [19]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Bot.run
 [20]: https://github.com/denisnumb/discord-py-guide/blob/main/examples/events.py
+[21]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%B8-%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9
+[22]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=command#command
