@@ -227,9 +227,11 @@ async def test(ctx):
 
 Все работает!
 
-Реализацию такой команды можно было бы сделать через обычного бота [`discord.Client`][5] прямо в `on_message()`, проверяя, наличие префикса в начале, а также конкретного названия. Однако при большом количестве команд запихивать все в одну функцию не очень хорошо, да и не удобно разделять аргументы, о которых можно почитать далее.
+Реализацию такой команды можно было бы сделать через обычного бота [`discord.Client`][5] прямо в `on_message()`, проверяя, наличие префикса и конкретного названия команды. Однако при большом количестве команд запихивать все в одну функцию не очень хорошо, да и не удобно разделять аргументы, про которые, кстати, можно почитать далее.
 
-**
+*\*Почитать подробнее, почему не стоит делат ькоманды через `on_message()` можно [**здесь**][28]*
+
+#### Сложные команды
 
 [1]: https://discord.com/developers/applications
 [2]: https://i.stack.imgur.com/ZnOYm.png
@@ -258,3 +260,4 @@ async def test(ctx):
 [25]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=message#discord.User
 [26]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Bot.process_commands
 [27]: https://github.com/denisnumb/discord-py-guide/blob/main/problems/%D0%B1%D0%BE%D1%82%20%D0%B8%D0%B3%D0%BD%D0%BE%D1%80%D0%B8%D1%80%D1%83%D0%B5%D1%82%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B.md
+[28]: https://github.com/denisnumb/discord-py-guide/blob/main/problems/%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%20%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20on_message.md
