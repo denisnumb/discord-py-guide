@@ -117,28 +117,6 @@ async def on_message(message):
 
 ---
 
-##### Еще одна распространенная проблема
-
-Допустим, вы решили написать логику обработчика `on_message()` так, чтобы при каждом новом сообщении, бот отвечал что-то в чат. Такой код будет выглядеть примерно так:
-```py
-@bot.event
-async def on_message(message):
-  # из объекта message получаем канал (channel) и вызываем у него метод send()
-  await message.channel.send('Получено сообщение!')
-```
-После запуска бота, может показаться странным, что бот начинает спамить сообщением *"Получено сообщение!"* до тех пор, пока вы его не отключите.
-
-На самом деле, не сложно догадаться, что бот каждый раз, отправляя свое сообщение, получает его в обработчик `on_message()` и снова выполняет код. Чтобы избежать этого, достаточно прописать одно условие: *если автор сообщения - сам бот, сообщение нужно игнорировать*
-```py
-@bot.event
-async def on_message(message):
-  if message.author != bot.user:
-    await message.channel.send('Получено сообщение!')
-```
-*Обратите внимание, что сравнивать нужно именно 2 объекта пользователя имеющие тип [`discord.User`][25], а не пользователя (`message.author`) и бота (`bot`), так как мы не можем сравнить между собой объекты разных типов. Про свойство `user`, а также другие свойства у объекта `bot`, все также можно узнать в документации.*
-
----
-
 #### Другие события
 
 По аналогии с примерами, приведенными выше, можно создать обработчик любого другого события, предствленного в `discord-py`. Главное, чтобы совпадало название и принимаемые аргументы. 
@@ -233,6 +211,13 @@ async def test(ctx):
 
 #### Сложные команды
 
+Для создания нескольких названий одной команды можно передать в декоратор `@bot.command()` аргумент [`aliases`][29], принимающий список (`list`) или кортеж (`tuple`) с названиями команды. При этом самого названия функции там быть **не должно**.
+```py
+@bot.command(aliases=['test', 'тест', 'тестовая_команда', 'test_command'])
+async def test_(ctx):
+  pass
+```
+
 [1]: https://discord.com/developers/applications
 [2]: https://i.stack.imgur.com/ZnOYm.png
 [3]: https://i.stack.imgur.com/HZCQP.png
@@ -261,3 +246,4 @@ async def test(ctx):
 [26]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Bot.process_commands
 [27]: https://github.com/denisnumb/discord-py-guide/blob/main/problems/%D0%B1%D0%BE%D1%82%20%D0%B8%D0%B3%D0%BD%D0%BE%D1%80%D0%B8%D1%80%D1%83%D0%B5%D1%82%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B.md
 [28]: https://github.com/denisnumb/discord-py-guide/blob/main/problems/%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%20%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20on_message.md
+[29]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Command.aliases
