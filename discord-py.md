@@ -273,7 +273,7 @@ async def get_text(ctx, *, text):
 ---
 
 Если сделать так:
-```
+```py
 @bot.command()
 async def get_text(ctx, *text):
     ...
@@ -283,7 +283,7 @@ async def get_text(ctx, *text):
 ---
 
 Также можно сначала получить несколько отдельных слов, а уже потом оставшийся текст:
-```
+```py
 @bot.command()
 async def get_text(ctx, first_word, second_word, *, other_text):
     ...
