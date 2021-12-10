@@ -289,9 +289,10 @@ async def get_text(ctx, *text):
 async def get_text(ctx, first_word, second_word, *, other_text):
     ...
 ```
-`first_word` будет иметь тип `str` и значение `'это'`
-`second_word` будет иметь тип `str` и значение `'тестовый'`
-`other_text` будет иметь тип `str` и значение `'текст для проверки функции'`
+
+ - `first_word` будет иметь тип `str` и значение `'это'`
+ - `second_word` будет иметь тип `str` и значение `'тестовый'`
+ - `other_text` будет иметь тип `str` и значение `'текст для проверки функции'`
  
  ---
  
