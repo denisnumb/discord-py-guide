@@ -14,6 +14,8 @@ ___
 
 [![введите сюда описание изображения][3]][3]
 
+После этого выдайте намерения в коде при [**инициализации бота**][34]
+
 Намерения нужны для работы с некоторыми событиями, объектами пользователей серверов (`участник`/`member`) и др. Они вам точно понадобятся, поэтому лучше включить их сразу, чтобы потом не спрашивать, почему вам не удается получить данные о пользователе сервера или чего-либо еще.
 
 ---
@@ -338,3 +340,4 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 [31]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=member#discord.Member
 [32]: https://www.heroku.com/
 [33]: https://github.com/denisnumb/discord-py-guide/blob/main/examples/commands.py
+[34]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
