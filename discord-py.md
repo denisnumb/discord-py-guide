@@ -1,5 +1,9 @@
 # **Руководство по использованию библиотеки `discord-py`**
 ### *Здесь вы можете почитать об основах, которые необходимо понимать, чтобы грамотно работать с библиотекой и не задавать вопросов, касающихся самых базовых вещей*
+
+## Содержание
+
+- [][]
 ___
 
 Вероятнее всего у вас уже имеется созданный бот, поэтому инструкция по его созданию будет пропущена *(но, возмжно появится позже)*.
@@ -341,3 +345,20 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 [32]: https://www.heroku.com/
 [33]: https://github.com/denisnumb/discord-py-guide/blob/main/examples/commands.py
 [34]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
+[35]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BF%D1%80%D0%B5%D0%B6%D0%B4%D0%B5-%D1%87%D0%B5%D0%BC-%D0%BD%D0%B0%D1%87%D0%B0%D1%82%D1%8C
+[36]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D1%81-%D0%B1%D0%BE%D1%82%D0%BE%D0%BC-%D0%B8-discord-py
+[37]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BF%D0%B8%D1%88%D0%B5%D0%BC-%D0%BA%D0%BE%D0%B4
+[38]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
+[39]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%B8-%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9
+[40]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#async-def-on_ready
+[41]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#async-def-on_messagemessage
+[42]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D0%B5-%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F
+[43]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-%D0%B1%D0%BE%D1%82%D0%B0
+[44]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0-%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D1%85-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4
+[45]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BF%D0%B5%D1%80%D0%B5%D0%B4-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%D0%BC-%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B9-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B
+[46]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B9-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B
+[47]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D1%81%D0%BB%D0%BE%D0%B6%D0%BD%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B
+[48]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9
+[49]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%B0%D1%80%D0%B3%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D0%BC%D0%B8-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B
+[50]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C-%D0%B2%D0%B5%D1%81%D1%8C-%D1%82%D0%B5%D0%BA%D1%81%D1%82-%D0%BA%D0%B0%D0%BA-%D0%BE%D0%B4%D0%B8%D0%BD-%D0%B0%D1%80%D0%B3%D1%83%D0%BC%D0%B5%D0%BD%D1%82
+
