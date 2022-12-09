@@ -331,7 +331,10 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 Конечно, там есть много других параметров, описание которых можно найти в документации по [`discord.SlashCommand`][36]
 
 Далее создаем функцию команды. Поскольку дискорд обрабатывает команды интерактивно 
-(![image](https://user-images.githubusercontent.com/61795655/206803051-2c32a095-b8df-4fa1-ad93-dd1ef8c12a7e.png)), необходимо что-то делать с контекстом выполнения команды:
+
+(![image](https://user-images.githubusercontent.com/61795655/206803051-2c32a095-b8df-4fa1-ad93-dd1ef8c12a7e.png)
+
+), необходимо что-то делать с контекстом выполнения команды:
 
 Либо его можно удалить (`await ctx.delete()`):
 ```py
