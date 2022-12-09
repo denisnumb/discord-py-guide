@@ -330,8 +330,79 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 ```
 Конечно, там есть много других параметров, описание которых можно найти в документации по [**discord.SlashCommand**][36]
 
-Далее создаем функцию команды. Поскольку дискорд обрабатывает команды интерактивно (![image](https://user-images.githubusercontent.com/61795655/206799950-cd89bf65-3006-492b-be90-ba3a1fab804e.png))
+Далее создаем функцию команды. Поскольку дискорд обрабатывает команды интерактивно (![image](https://user-images.githubusercontent.com/61795655/206799950-cd89bf65-3006-492b-be90-ba3a1fab804e.png)), необходимо что-то делать с контекстом выполнения команды:
 
+Либо его можно удалить (`await ctx.delete()`):
+```py
+@bot.slash_command(name='test_slash_command', description='Удаляет контекст и выводит сообщение "Успешный тест!"')
+async def __test(ctx):
+    await ctx.delete()
+    await ctx.send('Успешный тест!')
+```
+
+**Результат:**
+
+![image](https://user-images.githubusercontent.com/61795655/206800765-806ba37a-312d-477f-acac-7cab1d1ab4be.png)
+
+![image](https://user-images.githubusercontent.com/61795655/206800822-7f34e22f-b4e5-4498-88d5-05a55c5055aa.png)
+
+
+Либо отправить ответ сразу (`await ctx.respond()`):
+```py
+@bot.slash_command(name='test_slash_command', description='Отвечает "Успешный тест!"')
+async def __test(ctx):
+    await ctx.respond('Успешный тест!')
+```
+
+**Результат:**
+ 
+![image](https://user-images.githubusercontent.com/61795655/206801028-1bf5d120-7360-4a4f-a848-502912587b13.png)
+
+![image](https://user-images.githubusercontent.com/61795655/206801051-9c86d798-8935-4dcd-b959-089d7f507535.png)
+
+Если не сделать что-то с конекстом, то дискорд не дождавшись ответа от бота, выдаст ошибку. Например, вот такая команда, которая ничего не возвращает, а просто осуществляет вывод в консоль
+
+```py
+@bot.slash_command(name='test_slash_command', description='Выполняет print(\'Команда выполнена!\')')
+async def __test(ctx):
+    print('Команда выполнена!')
+```
+
+![image](https://user-images.githubusercontent.com/61795655/206801601-e9a7ccee-0e37-48fb-b558-e99d3c16c7a9.png)
+
+
+Действительно выведет сообщение в консоль, но вот обработка команды в дискорде будет выглядеть так:
+
+![image](https://user-images.githubusercontent.com/61795655/206801684-51f55017-11c6-42db-8320-5f8a6cdf546e.png)
+
+![image](https://user-images.githubusercontent.com/61795655/206801704-9aeed74d-16b1-4f9d-8504-a89b817db061.png)
+
+Выглядит так, будто при выполнении произошла ошибка, но на деле это просто дискорд не получил ответа от бота. Но это может произойти даже если команда подразумевает ответ. Например, если идут какие-то долгие вычисления, дискорд может просто не дождаться ответа и команда не выполнится. В таких случаях контекст стоит либо удалять контекст, как показано в примере выше, либо использовать метод контекста [`defer()`][37]. 
+
+Из описания следует, что он нужен как раз для таких ситуаций: "*Откладывает ответ на взаимодействие. Обычно это используется, когда взаимодействие подтверждено, а дополнительное действие будет выполнено позже.*"
+
+```py
+import asyncio
+. . .
+
+@bot.slash_command(name='test_slash_command', description='Имитирует 10-секундное вычисление и выводит "Команда выполнена!"')
+async def __test(ctx):
+    await ctx.defer()
+    await asyncio.sleep(10)
+    await ctx.respond('Команда выполнена!')
+```
+
+**Результат:**
+
+![image](https://user-images.githubusercontent.com/61795655/206802621-a42df400-803e-4875-be19-755d198023c8.png)
+
+Через 10 секунд:
+
+![image](https://user-images.githubusercontent.com/61795655/206802645-7b67c000-2017-4ab1-a511-ee4ace834044.png)
+
+Разумеется, использовать метод `await ctx.defer()` имеет смысл только если вы собираетесь что-то отвечать на команду. Если же никакого ответа не подразумевается, то лучше просто удалять контекст. Иначе бот просто бесконечно будет "думать" как на скрине выше.
+
+#### 
  
  ---
  
@@ -380,4 +451,5 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 [34]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
 [35]: https://docs.pycord.dev/en/stable/index.html
 [36]: https://docs.pycord.dev/en/stable/api/application_commands.html#discord.SlashCommand
+[37]: https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext.defer
 
