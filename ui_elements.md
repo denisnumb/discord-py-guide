@@ -327,7 +327,6 @@ bot.run('TOKEN')
 
 ![Untitled (1)](https://user-images.githubusercontent.com/61795655/206868185-3e6ddb42-aef3-436b-bc3b-7cd8a1f02402.gif)
 
-
 [1]: https://github.com/denisnumb/discord-py-guide/blob/main/slash-commands.md#%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-slash-%D0%BA%D0%BE%D0%BC%D0%BC%D0%B0%D0%BD%D0%B4
 [2]: https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.Button
 [3]: https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.Select
