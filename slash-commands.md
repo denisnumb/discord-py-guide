@@ -55,9 +55,7 @@ async def __test(ctx):
 
 **Результат:**
  
-![image](https://user-images.githubusercontent.com/61795655/206801028-1bf5d120-7360-4a4f-a848-502912587b13.png)
-
-![image](https://user-images.githubusercontent.com/61795655/206801051-9c86d798-8935-4dcd-b959-089d7f507535.png)
+![3](https://user-images.githubusercontent.com/61795655/206872087-f27b668f-e7fb-4f89-ab83-09471bab1292.gif)
 
 Если не сделать что-то с конекстом, то дискорд не дождавшись ответа от бота, выдаст ошибку. Например, вот такая команда, которая ничего не возвращает, а просто осуществляет вывод в консоль
 
@@ -67,14 +65,9 @@ async def __test(ctx):
     print('Команда выполнена!')
 ```
 
-![image](https://user-images.githubusercontent.com/61795655/206801601-e9a7ccee-0e37-48fb-b558-e99d3c16c7a9.png)
-
-
 Действительно выведет сообщение в консоль, но вот обработка команды в дискорде будет выглядеть так:
 
-![image](https://user-images.githubusercontent.com/61795655/206801684-51f55017-11c6-42db-8320-5f8a6cdf546e.png)
-
-![image](https://user-images.githubusercontent.com/61795655/206801704-9aeed74d-16b1-4f9d-8504-a89b817db061.png)
+![4](https://user-images.githubusercontent.com/61795655/206872103-5918c39b-2df5-4257-af4d-d3ab84e32fa8.gif)
 
 Выглядит так, будто при выполнении произошла ошибка, но на деле это просто дискорд не получил ответа от бота. Однако это может произойти даже если команда подразумевает ответ. Например, если идут какие-то долгие вычисления, дискорд может просто не дождаться ответа и команда не выполнится. В таких случаях контекст стоит либо удалять, как показано в примере выше, либо использовать метод контекста [`defer()`][37]. 
 
@@ -84,20 +77,16 @@ async def __test(ctx):
 import asyncio
 . . .
 
-@bot.slash_command(name='test_slash_command', description='Имитирует 10-секундное вычисление и выводит "Команда выполнена!"')
+@bot.slash_command(name='test_slash_command', description='Имитирует 5-секундное вычисление и выводит "Команда выполнена!"')
 async def __test(ctx):
     await ctx.defer()
-    await asyncio.sleep(10)
+    await asyncio.sleep(5)
     await ctx.respond('Команда выполнена!')
 ```
 
 **Результат:**
 
-![image](https://user-images.githubusercontent.com/61795655/206802621-a42df400-803e-4875-be19-755d198023c8.png)
-
-Через 10 секунд:
-
-![image](https://user-images.githubusercontent.com/61795655/206802645-7b67c000-2017-4ab1-a511-ee4ace834044.png)
+![5](https://user-images.githubusercontent.com/61795655/206872116-090ad003-f853-450b-bc13-864cbd4cbd00.gif)
 
 Разумеется, использовать метод `await ctx.defer()` имеет смысл только если вы собираетесь что-то отвечать на команду. Если же никакого ответа не подразумевается, то лучше просто удалять контекст. Иначе бот просто бесконечно будет "думать" как на скрине выше.
 
@@ -163,28 +152,20 @@ async def __test(
 
 **Результат:**
 
-Обратите внимание, что аргументы можно указывать в разном порядке
+Обратите внимание:
 
-![image](https://user-images.githubusercontent.com/61795655/206813212-8832367c-9aac-4867-a82b-c6b48931b543.png)
+- Аргументы можно указывать в разном порядке
+- Встроенная проверка не даст ввести некорректное значение
+- Необязательные *(`required=False`)* параметры можно не указывать
 
-Встроенная проверка не даст ввести некорректное значение
-
-![image](https://user-images.githubusercontent.com/61795655/206813236-9fc10220-f4b3-414c-8638-3c68511493ac.png)
-
-![image](https://user-images.githubusercontent.com/61795655/206813264-09b815a0-2eae-46eb-8df7-7a04a4928595.png)
-
-![image](https://user-images.githubusercontent.com/61795655/206813284-0e8466c0-59fa-4987-9f02-2d869488ca62.png)
-
-Необязательные *(`required=False`)* параметры можно не указывать
-
-![image](https://user-images.githubusercontent.com/61795655/206813366-4debcd6a-23f1-49dc-b95e-d568d6cb5b63.png)
+![6](https://user-images.githubusercontent.com/61795655/206872158-6975be7a-19df-48b6-acee-99964bc4300d.gif)
 
 На выходе получаем:
-```py
-1 (int)
+```cmd
+5 (int)
 False (bool)
 dennys#0000 (Member)
-Текст из нескольких слов (str)
+Текст с пробелами (str)
 Яблоко (str)
 ```
 
@@ -222,10 +203,7 @@ async def test(ctx, arg: Option(CustomBoolArgType, choices=CustomBoolArgType.cho
 
 **Результат:**
 
-![image](https://user-images.githubusercontent.com/61795655/206814748-fc3d760b-00fe-474c-841b-40132b3bdfac.png)
-
-![image](https://user-images.githubusercontent.com/61795655/206814795-885d33e7-8fbd-4b0d-8606-36249f4bf04f.png)
-
+![7](https://user-images.githubusercontent.com/61795655/206872185-a4c473ec-5e56-43bc-9dd1-c346ae733e50.gif)
 
 Разумеется, можно делать и более сложные конвертации во что угодно, буквально ограничиваясь своей фантазией и необходимостью. Вот пример преобразования слова в число:
 
@@ -246,10 +224,7 @@ async def test(ctx, arg: Option(IntFromStrArgType)):
 
 **Результат:**
 
-![image](https://user-images.githubusercontent.com/61795655/206818675-3ef4bb84-214f-45ec-ba6b-ef8541bd9f00.png)
-
-![image](https://user-images.githubusercontent.com/61795655/206818702-3696cd45-5c1d-420d-b51c-031a13ab3d31.png)
-
+![8](https://user-images.githubusercontent.com/61795655/206872189-2fb4d7af-9c54-409f-a387-b73f0e65073b.gif)
 
 [7]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Bot
 [34]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
