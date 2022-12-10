@@ -438,6 +438,14 @@ from discord import Option
 
 Есть и другие параметры, про которые все также можно почитать в документации к [`discord.Option`][38]. *Некоторые из них будут разобраны позже.*
 
+Таким образом, получение любого аргумента будет выглядеть так:
+
+```py
+@bot.slash_command()
+async def test(ctx, arg: Option(str)):
+    . . .
+```
+
 Теперь давайте попробуем получить от пользователя следующие аргументы:
 
 1. Число в диапазоне от 1 до 10
@@ -449,7 +457,7 @@ from discord import Option
 Реализация аргументов будет выглядеть так:
 
 ```py
-@bot.slash_command(name='test_slash_command', guild_ids=[752821563455176824])
+@bot.slash_command(name='test_slash_command')
 async def __test(
     ctx,
     number:  Option(int,             description='Число в диапазоне от 1 до 10', required=True,  min_value=1, max_value=10),
@@ -466,13 +474,19 @@ async def __test(
 
 **Результат:**
 
+Обратите внимание, что аргументы можно указывать в разном порядке
+
 ![image](https://user-images.githubusercontent.com/61795655/206813212-8832367c-9aac-4867-a82b-c6b48931b543.png)
+
+Встроенная проверка не даст ввести некорректное значение
 
 ![image](https://user-images.githubusercontent.com/61795655/206813236-9fc10220-f4b3-414c-8638-3c68511493ac.png)
 
 ![image](https://user-images.githubusercontent.com/61795655/206813264-09b815a0-2eae-46eb-8df7-7a04a4928595.png)
 
 ![image](https://user-images.githubusercontent.com/61795655/206813284-0e8466c0-59fa-4987-9f02-2d869488ca62.png)
+
+Необязательные *(`required=False`)* параметры можно не указывать
 
 ![image](https://user-images.githubusercontent.com/61795655/206813366-4debcd6a-23f1-49dc-b95e-d568d6cb5b63.png)
 
@@ -484,6 +498,66 @@ dennys#0000 (Member)
 Текст из нескольких слов (str)
 Яблоко (str)
 ```
+
+#### Пользовательские типы аргументов
+
+Предположим, вам нужно получить от пользователя `bool`-значение. Чтобы не указывать в описании аргумента за что отвечает `True`, а за что `False`, можно написать свой тип аргумента, который будет предлагать пользователю выбор `Да`/`Нет` (Вместо `True`/`False`), затем автоматически конвертировать выбор в `bool`.
+
+Для этого создадим новый статический класс, который будет наследоваться от [`discord.ext.commands.Converter`][40]. 
+
+Класс должен переопределять метод `convert`, принимающий аргументы: 
+
+- `cls` — объект этого класса
+- `ctx` — контекст выполнения команды
+- `arg` — значение аргумента
+
+Данный метод будет конвертировать полученную строку (`str`) `'Да'`/`'Нет'` в `bool` в зависимоси от значения.
+
+Также внутри класса можно сразу создать поле, содержащие варианты выбора:
+
+```py
+class CustomBoolArgType(commands.Converter):
+    choices = ('Да', 'Нет')
+
+    async def convert(cls, ctx, arg):
+        return arg == 'Да'
+```
+
+Теперь подставим его в качестве типа аргумента. В параметр `choices` передадим значение поля класса:
+
+```py
+@bot.slash_command()
+async def test(ctx, arg: Option(CustomBoolArgType, choices=CustomBoolArgType.choices)):
+    await ctx.respond(f'{arg}, {type(arg).__name__}')
+```
+
+**Результат:**
+
+![image](https://user-images.githubusercontent.com/61795655/206814748-fc3d760b-00fe-474c-841b-40132b3bdfac.png)
+
+![image](https://user-images.githubusercontent.com/61795655/206814795-885d33e7-8fbd-4b0d-8606-36249f4bf04f.png)
+
+
+Разумеется, можно делать и более сложные конвертации во что угодно, буквально ограничиваясь своей фантазией и необходимостью. Вот пример преобразования слова в число:
+
+```py
+class IntFromStrArgType(commands.Converter):
+    async def convert(cls, ctx, arg):
+        try:
+            return cls.choices.index(arg) + 1
+        except ValueError:
+            return -1
+
+@bot.slash_command()
+async def test(ctx, arg: Option(IntFromStrArgType)):
+    await ctx.respond(f'{arg}, {type(arg).__name__}')
+```
+
+**Результат:**
+
+![image](https://user-images.githubusercontent.com/61795655/206818675-3ef4bb84-214f-45ec-ba6b-ef8541bd9f00.png)
+
+![image](https://user-images.githubusercontent.com/61795655/206818702-3696cd45-5c1d-420d-b51c-031a13ab3d31.png)
 
 ---
  
@@ -535,3 +609,4 @@ dennys#0000 (Member)
 [37]: https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext.defer
 [38]: https://docs.pycord.dev/en/stable/api/application_commands.html#id7
 [39]: https://github.com/denisnumb/discord-py-guide/blob/main/problems/slash_command_not_update.md
+[40]: https://docs.pycord.dev/en/stable/ext/commands/api.html#discord.ext.commands.Converter
