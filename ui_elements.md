@@ -11,7 +11,7 @@
 ![image](https://user-images.githubusercontent.com/61795655/206858093-90e23edb-66e4-4786-8852-05b72897185f.png)
 
 - Выпадающие списки
-- 
+
 ![image](https://user-images.githubusercontent.com/61795655/206858247-28bdb859-3445-4353-b989-87bcf7846729.png)
 
 ![image](https://user-images.githubusercontent.com/61795655/206858257-f67a805f-35f0-4736-93dc-10019770786e.png)
