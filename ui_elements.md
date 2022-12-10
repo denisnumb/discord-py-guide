@@ -158,9 +158,6 @@ bot.run('TOKEN')
 ![Untitled](https://user-images.githubusercontent.com/61795655/206863121-1c8c99b1-c42d-41cd-aeac-c609512dbad7.gif)
 
 
-Сделаем, чтобы при нажатии на кнопку, в ее текст подставлялся ник пользователя, который ее нажал.
-
-
 [1]: https://github.com/denisnumb/discord-py-guide/blob/main/slash-commands.md#%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-slash-%D0%BA%D0%BE%D0%BC%D0%BC%D0%B0%D0%BD%D0%B4
 [2]: https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.Button
 [3]: https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.Select
