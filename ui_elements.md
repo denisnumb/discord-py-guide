@@ -45,11 +45,8 @@ await channel.send('Текст сообщения', view=view)
 
 Кнопки имеют различные стили, которые хранятся в классе [`discord.ButtonStyle`][9]: 
 
-- `discord.ButtonStyle.blurple`: ![image](https://user-images.githubusercontent.com/61795655/206860355-c93f825c-5d67-4f2b-a6b5-6a3cde60dd3f.png)
-- `discord.ButtonStyle.gray`: ![image](https://user-images.githubusercontent.com/61795655/206860436-eb015c4f-91e6-4915-887b-43feaa2e6338.png)
-- `discord.ButtonStyle.green`: ![image](https://user-images.githubusercontent.com/61795655/206860470-428a05b0-4deb-40e2-96b0-d1f3f1ac5fb2.png)
-- `discord.ButtonStyle.red`: ![image](https://user-images.githubusercontent.com/61795655/206860483-a794d199-2233-4e1c-84ed-fa592f4abecb.png)
-- `discord.ButtonStyle.link`: ![image](https://user-images.githubusercontent.com/61795655/206860488-40c33134-f30f-49d1-b08d-cbe7c51b81d1.png)
+![image](https://user-images.githubusercontent.com/61795655/206860608-3055ef61-ad56-49f8-b00f-33a0356dec24.png)
+
 
 Импортируем из модуля `discord.ui` класс кнопки и класс формы для кнопки:
 
