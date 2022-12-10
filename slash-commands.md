@@ -1,4 +1,8 @@
 # Реализация slash-комманд
+
+*Если вы только начали изучать работу с библиотекой, то рекомендую сначала изучить [**основное руководство**][41] или хотя бы [**основы *prefix*-команд**][42]* 
+
+---
  
  На этом этапе надо отметить, что `discord-py` — устаревшая библиотека, которая не обновляется под новые фишки дискорда. Поэтому для работы со *slash*-командами, кнопками и выпадающими списками стоит удалить старую библиотеку и установить ее форк `PyCord`:
  ```
@@ -258,3 +262,5 @@ async def test(ctx, arg: Option(IntFromStrArgType)):
 [38]: https://docs.pycord.dev/en/stable/api/application_commands.html#id7
 [39]: https://github.com/denisnumb/discord-py-guide/blob/main/problems/slash_command_not_update.md
 [40]: https://docs.pycord.dev/en/stable/ext/commands/api.html#discord.ext.commands.Converter
+[41]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8-discord-py
+[42]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0-%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D1%85-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4
