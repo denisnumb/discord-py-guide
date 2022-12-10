@@ -255,6 +255,18 @@ async def select_callback(interaction: discord.Interaction):
     await interaction.message.edit(content=f'{interaction.user.name} выбрал {interaction.data["values"][0]}')
 ```
 
+Чтобы было понятнее, каким образом `interaction.data["values"][0]` возвращает нам выбранный элемент, просто взгляните на структуру объекта `interaction.data`, при выборе "Банан 🍌":
+
+```json
+{
+    "values": [
+        "Банан"
+    ],
+    "custom_id": "603f9ddf258347e9b6c75cb760ab3d52",
+    "component_type": 3
+}
+```
+
 ---
 
 Далее присваиваем обработчик:
