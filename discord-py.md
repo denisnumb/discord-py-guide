@@ -542,9 +542,11 @@ async def test(ctx, arg: Option(CustomBoolArgType, choices=CustomBoolArgType.cho
 
 ```py
 class IntFromStrArgType(commands.Converter):
+    values = ('Один', 'Два', 'Три')
+
     async def convert(cls, ctx, arg):
         try:
-            return cls.choices.index(arg) + 1
+            return cls.values.index(arg) + 1
         except ValueError:
             return -1
 
