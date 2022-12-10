@@ -30,7 +30,7 @@
 
 Далее создаем функцию команды. Поскольку дискорд обрабатывает команды интерактивно,
 
-![image](https://user-images.githubusercontent.com/61795655/206803051-2c32a095-b8df-4fa1-ad93-dd1ef8c12a7e.png)
+![1](https://user-images.githubusercontent.com/61795655/206871232-b09c35c1-4610-4ffe-932b-9bdcab858988.gif)
 
 необходимо что-то делать с контекстом выполнения команды:
 
