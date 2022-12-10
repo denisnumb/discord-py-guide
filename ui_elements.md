@@ -47,13 +47,108 @@ await channel.send('Текст сообщения', view=view)
 
 ![image](https://user-images.githubusercontent.com/61795655/206860608-3055ef61-ad56-49f8-b00f-33a0356dec24.png)
 
-
 Импортируем из модуля `discord.ui` класс кнопки и класс формы для кнопки:
 
 ```py
 from discord.ui import View, Button
 ```
 
+Пусть кнопка создается при вызове команды `/test`:
+
+```py
+@bot.slash_command(name='create_button', description='Создает зеленую кнопку')
+async def create_button_command(ctx: discord.ApplicationContext):
+    . . .
+```
+
+Для начала создадим форму, в которую будем размещать кнопку. Из документации видим, что по умолчанию параметр `timeout` имеет значение `180.0`, что означает, что дискорд будет передавать боту инормацию о нажатии на кнопку только в течение `180` секунд, а потом просто забудет про нее. Если вам нужно, чтобы бот работал с кнопкой все время, пока он запущен, то значение параметра следует установить как `None`
+
+![image](https://user-images.githubusercontent.com/61795655/206860817-fded6bef-de83-4d2b-ad30-a0c6a0c99137.png)
+
+```py
+view = View(timeout=None)
+```
+
+Теперь давайте создадим кнопку. Из документации по классу [`discord.ui.Button`][2] видим, что можем передать в конструктор класса парамтры:
+
+- `label`:      `str`                        — текст кнопки
+- `emoji`:      [`discord.Emoji`][10]/`str`  — эмоджи рядом с текстом
+- `style`:      [`discord.ButtonStyle`][9]   — стиль кнопки
+- `custom_id`:  `str`                        — пользовательский идентификатор кнопки *(для удобства обработки нажатий)*
+- `disabled`:   `bool`                       — состояние кнопки `(включена или выключена)`
+
+*И другие параметры, про которые можно почитать в документации.*
+
+Создаем объект кнопки:
+
+```py
+button = Button(label='Кнопка', style=discord.ButtonStyle.green)
+```
+
+Кнопка есть, теперь надо сделать, чтобы при нажатии на нее вызывалась какая-то функция. Сделаем, чтобы при нажатии на кнопку, текст сообщения отображал последнего пользователя, который ее нажал.
+
+Реализуем это в функции `button_callback`:
+
+Из [документации][12] видим, что при нажатии на кнопку, в обработчик будет передаваться аргумент `interaction` ([`discord.Interaction`][11]), из которого можно получить *пользовательский идентификатор кнопки*, *пользователя, который нажал на кнопку* и многое другое.
+
+![image](https://user-images.githubusercontent.com/61795655/206861488-58d93f13-b2fd-4388-8901-be37e0acfbe3.png)
+
+Не забываем указать, что функция принимает этот аргумент `interaction`.
+
+```py
+async def button_callback(interaction: discord.Interaction):
+    await interaction.message.edit(content=f'Последним на кнопку нажал: {interaction.user.name}')
+```
+
+Далее присваиваем кнопке обработчик нажатия:
+
+```py
+button.callback = button_callback
+```
+
+Добавляем ее в форму `view`:
+
+```py
+view.add_item(button)
+```
+
+И отправляем ответ на команду:
+
+```py
+await ctx.respond(view=view)
+```
+
+Должно получиться как-то так:
+
+```py
+import discord
+from discord.ui import View, Button
+from discord.ext import commands
+
+bot = commands.Bot(intents=discord.Intents.all())
+
+async def button_callback(interaction: discord.Interaction):
+    await interaction.message.edit(content=f'Последним на кнопку нажал: {interaction.user.name}')
+
+@bot.slash_command(name='create_button', description='Создает зеленую кнопку', guild_ids=[752821563455176824])
+async def create_button_command(ctx: discord.ApplicationContext):
+    view = View(timeout=None)
+    button = Button(label='Кнопка', style=discord.ButtonStyle.green)
+    button.callback = button_callback
+    view.add_item(button)
+
+    await ctx.respond(view=view)
+
+
+bot.run('TOKEN')
+```
+
+**Результат:**
+
+![Untitled](https://user-images.githubusercontent.com/61795655/206863121-1c8c99b1-c42d-41cd-aeac-c609512dbad7.gif)
+
+
+Сделаем, чтобы при нажатии на кнопку, в ее текст подставлялся ник пользователя, который ее нажал.
 
 
 [1]: https://github.com/denisnumb/discord-py-guide/blob/main/slash-commands.md#%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-slash-%D0%BA%D0%BE%D0%BC%D0%BC%D0%B0%D0%BD%D0%B4
@@ -65,3 +160,6 @@ from discord.ui import View, Button
 [7]: https://docs.pycord.dev/en/stable/api/models.html#discord.Message.embeds
 [8]: https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.View
 [9]: https://docs.pycord.dev/en/stable/api/enums.html#discord.ButtonStyle
+[10]: https://docs.pycord.dev/en/stable/api/models.html#discord.Emoji
+[11]: https://docs.pycord.dev/en/stable/api/models.html#discord.Interaction
+[12]: https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.Button.callback
