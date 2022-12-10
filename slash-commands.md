@@ -44,10 +44,7 @@ async def __test(ctx):
 
 **Результат:**
 
-![image](https://user-images.githubusercontent.com/61795655/206800765-806ba37a-312d-477f-acac-7cab1d1ab4be.png)
-
-![image](https://user-images.githubusercontent.com/61795655/206800822-7f34e22f-b4e5-4498-88d5-05a55c5055aa.png)
-
+![2](https://user-images.githubusercontent.com/61795655/206871414-b2bb5156-8527-4fa3-b9e5-6a4807501e42.gif)
 
 Либо отправить ответ сразу (`await ctx.respond()`):
 ```py
