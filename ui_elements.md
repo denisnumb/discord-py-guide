@@ -130,7 +130,7 @@ await ctx.respond(view=view)
 
 ---
 
-Должно получиться как-то так:
+Должно получиться как-то так *(код с пояснениями [здесь][13])*:
 
 ```py
 import discord
@@ -172,3 +172,4 @@ bot.run('TOKEN')
 [10]: https://docs.pycord.dev/en/stable/api/models.html#discord.Emoji
 [11]: https://docs.pycord.dev/en/stable/api/models.html#discord.Interaction
 [12]: https://docs.pycord.dev/en/stable/api/ui_kit.html#discord.ui.Button.callback
+[13]: https://github.com/denisnumb/discord-py-guide/blob/main/examples/button.py
