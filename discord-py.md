@@ -319,6 +319,7 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 ## Другие материалы
 
 - [***Slash*-команды**][35]
+- [**Фоновые задачи (Tasks)**][36]
  
  
 [1]: https://discord.com/developers/applications
@@ -356,3 +357,4 @@ async def get_text(ctx, first_word, second_word, *, other_text):
 [33]: https://github.com/denisnumb/discord-py-guide/blob/main/examples/commands.py
 [34]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
 [35]: https://github.com/denisnumb/discord-py-guide/blob/main/slash-commands.md#%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-slash-%D0%BA%D0%BE%D0%BC%D0%BC%D0%B0%D0%BD%D0%B4
+[36]: https://github.com/denisnumb/discord-py-guide/blob/main/tasks.md
