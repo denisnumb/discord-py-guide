@@ -227,6 +227,7 @@ async def test(ctx, arg: Option(IntFromStrArgType)):
 ![8](https://user-images.githubusercontent.com/61795655/206872189-2fb4d7af-9c54-409f-a387-b73f0e65073b.gif)
 
 [7]: https://discordpy.readthedocs.io/en/stable/ext/commands/api.html?highlight=bot#discord.ext.commands.Bot
+[31]: https://discordpy.readthedocs.io/en/stable/api.html?highlight=member#discord.Member
 [34]: https://github.com/denisnumb/discord-py-guide/blob/main/discord-py.md#%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0
 [35]: https://docs.pycord.dev/en/stable/index.html
 [36]: https://docs.pycord.dev/en/stable/api/application_commands.html#discord.SlashCommand
